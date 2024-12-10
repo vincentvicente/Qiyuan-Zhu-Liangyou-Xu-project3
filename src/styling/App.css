@@ -1,0 +1,188 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f9;
+}
+.main-content {
+  padding-bottom: 80px; /* 预留 Footer 的高度 */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* App.css */
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px 20px 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.form-container h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-container .form-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.form-container .form-button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .form-container h2 {
+    font-size: 20px;
+  }
+
+  .form-container input {
+    font-size: 14px;
+  }
+
+  .form-container .form-button {
+    font-size: 14px;
+  }
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar h1 {
+  font-size: 24px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+.navbar button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  background-color: #777;
+}
+
+@media (max-width: 768px) {
+  .navbar h1 {
+    font-size: 20px;
+  }
+
+  .navbar-links a {
+    font-size: 16px;
+    margin: 0 5px;
+  }
+
+  footer {
+    font-size: 14px;
+  }
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  max-width: 200px; /* 限制按钮的最大宽度 */
+  margin: 10px auto; /* 居中按钮 */
+  display: block; /* 将按钮设置为块级元素，方便居中 */
+  text-align: center; /* 确保按钮文字居中 */
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  button {
+    font-size: 14px;
+    padding: 8px 16px;
+    max-width: 150px; /* 在小屏幕上限制按钮宽度 */
+  }
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+width: 100%;
+max-width: 400px; /* 限制输入框的最大宽度 */
+padding: 10px;
+margin: 10px auto; /* 上下间距 */
+border: 1px solid #ccc;
+border-radius: 5px;
+display: block; /* 让输入框在屏幕上居中 */
+box-sizing: border-box;
+}
+
+textarea {
+resize: none; /* 禁止调整大小 */
+}
+
+@media (max-width: 768px) {
+input[type="text"],
+input[type="password"],
+textarea {
+  max-width: 300px; /* 在小屏幕上限制输入框宽度 */
+}
+}
+
+
