@@ -1,55 +1,77 @@
 const express = require('express');
-const { Status } = require('../models');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const { User, Status } = require('../models');
+const authenticate = require('../middleware/authenticate');
+require('dotenv').config();
+
 const router = express.Router();
 
-router.post('/', async (req, res) => {
-    const { userId, content } = req.body;
-    try {
-      const newStatus = new Status({ userId, content });
-      await newStatus.save();
-      res.status(201).json({ message: 'Status created successfully' });
-    } catch (error) {
-      console.error('Error creating status:', error);
-      res.status(500).json({ error: 'Error creating status', details: error.message });
-    }
-  });
-
-
-router.get('/', async (req, res) => {
+// 用户注册
+router.post('/register', async (req, res) => {
+  const { username, password } = req.body;
   try {
-    const statuses = await Status.find().sort({ createdAt: -1 }).populate('userId', 'username');
-    res.status(200).json(statuses);
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, password: hashedPassword });
+    await newUser.save();
+    res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Error fetching statuses' });
+    console.error('Error creating user:', error.message);
+    res.status(500).json({ error: 'Error creating user' });
   }
 });
 
-
-router.put('/:id', async (req, res) => {
-  const { id } = req.params;
-  const { content } = req.body;
+// 用户登录
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
   try {
-    const updatedStatus = await Status.findByIdAndUpdate(id, { content }, { new: true });
-    if (!updatedStatus) {
-      return res.status(404).json({ error: 'Status not found' });
+    const user = await User.findOne({ username });
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ error: 'Invalid username or password' });
     }
-    res.status(200).json(updatedStatus);
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.status(200).json({ token });
   } catch (error) {
-    res.status(500).json({ error: 'Error updating status' });
+    console.error('Error logging in:', error.message);
+    res.status(500).json({ error: 'Error logging in' });
   }
 });
 
-
-router.delete('/:id', async (req, res) => {
-  const { id } = req.params;
+// 获取用户数据和状态更新
+router.get('/:username', async (req, res) => {
+  const { username } = req.params;
   try {
-    const deletedStatus = await Status.findByIdAndDelete(id);
-    if (!deletedStatus) {
-      return res.status(404).json({ error: 'Status not found' });
+    const user = await User.findOne({ username }).select('-password');
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
     }
-    res.status(200).json({ message: 'Status deleted successfully' });
+    const statuses = await Status.find({ userId: user._id }).sort({ createdAt: -1 });
+    res.status(200).json({ user, statuses });
   } catch (error) {
-    res.status(500).json({ error: 'Error deleting status' });
+    console.error('Error fetching user data:', error.message);
+    res.status(500).json({ error: 'Error fetching user data' });
+  }
+});
+
+// 更新用户描述
+router.put('/:username/description', authenticate, async (req, res) => {
+  const { username } = req.params;
+  const { description } = req.body;
+
+  try {
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    if (user._id.toString() !== req.userId) {
+      return res.status(403).json({ error: 'You can only update your own profile' });
+    }
+    user.description = description || user.description;
+    await user.save();
+    res.status(200).json({ message: 'Description updated successfully', user });
+  } catch (error) {
+    console.error('Error updating description:', error.message);
+    res.status(500).json({ error: 'Error updating description' });
   }
 });
 
