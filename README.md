@@ -61,7 +61,7 @@ npm install
 ```
 #### Frontend:
 Navigate to the `frontend` directory and run:
-```
+```bash
 cd frontend
 npm install
 ```
@@ -78,6 +78,7 @@ npm run dev
 ```
 
 ### 4. Folder Structure
+```
 5610-final/
 ├── backend/
 │   ├── models/            # Mongoose schemas for User and Status
@@ -93,4 +94,4 @@ npm run dev
 │   ├── .env               # Frontend environment variables
 ├── .env                   # Backend environment variables
 ├── package.json           # Project dependencies
-
+```
