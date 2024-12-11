@@ -20,7 +20,9 @@ This project is a full-stack web application that integrates a React-based front
 
 ---
 
-## Requirements
+## Environment Configuration Guide
+
+Before running the application, make sure to set up the necessary environment variables as outlined below:
 
 ### Prerequisites
 - Node.js and npm installed on your machine.
