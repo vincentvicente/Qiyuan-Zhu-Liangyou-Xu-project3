@@ -1,0 +1,136 @@
+.user-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+  width: 30%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
+
+.user-header {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.user-joined {
+  font-size: 14px;
+  text-align: center;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.description {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}
+
+.status-section {
+  width: 65%;
+  padding: 20px;
+  gap: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+}
+
+.status-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.status-list {
+  list-style: none;
+  padding: 0;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between; /* 左右对齐 */
+  align-items: center; /* 垂直居中 */
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.status-content {
+  flex: 1; /* 占据剩余空间 */
+}
+
+.status-actions {
+  display: flex;
+  gap: 10px; /* 按钮之间的间距 */
+}
+
+.status-actions button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.status-actions button:hover {
+  background-color: #0056b3;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+  .user-page {
+    flex-direction: column;
+  }
+
+  .user-info,
+  .status-section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .user-header {
+    font-size: 24px;
+  }
+
+  .status-header {
+    font-size: 20px;
+  }
+}
