@@ -11,7 +11,8 @@ app.use(
   cors({
     origin: [
       'http://localhost:5173',
-      'https://qiyuan-zhu-liangyou-xu-project3.onrender.com',
+      'http://localhost:5174',
+     'https://qiyuan-zhu-liangyou-xu-project3.onrender.com',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
