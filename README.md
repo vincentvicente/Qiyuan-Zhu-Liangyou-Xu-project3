@@ -46,7 +46,7 @@ REACT_APP_API_URL=http://localhost:3000
 ### 1. Clone the Repository
 ```
 git clone <repository-url>
-cd 5610-final
+cd Qiyuan-Zhu-Liangyou-Xu-project3-main
 ```
 
 ### 2. Install Dependencies
@@ -79,7 +79,7 @@ npm run dev
 
 ### 4. Folder Structure
 ```
-5610-final/
+Qiyuan-Zhu-Liangyou-Xu-project3-main/
 ├── backend/
 │   ├── models/            # Mongoose schemas for User and Status
 │   ├── routes/            # API routes
