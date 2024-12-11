@@ -5,13 +5,13 @@ export default defineConfig(({ mode }) => {
   const isDev = mode === 'development';
 
   return {
-    root: "./frontend",
+    root: "./frontend", 
     plugins: [react()],
     ...(isDev && {
       server: {
         proxy: {
           '/api': {
-            target: 'http://localhost:3000/',
+            target: 'http://localhost:3000/', 
             changeOrigin: true,
           },
         },
