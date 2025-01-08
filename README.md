@@ -1,4 +1,4 @@
-This project is a full-stack web application that integrates a React-based frontend with a Node.js/Express backend. The backend leverages MongoDB for data persistence, providing a robust solution for user management and status updates.
+# This project is a full-stack web application that integrates a React-based frontend with a Node.js/Express backend. The backend leverages MongoDB for data persistence, providing a robust solution for user management and status updates.
 
 ---
 
